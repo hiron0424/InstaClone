@@ -10,6 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <% if logged_in? %>
+        <%= link_to 'ログアウト', session_path(current_user.id), method: :delete, class: 'btn btn-outline-danger' %>
+      <% else %>
+      <% end %>
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
