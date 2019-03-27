@@ -12,6 +12,7 @@
   <body>
     <div class="container">
       <% if logged_in? %>
+        <%= link_to '一覧ページ', photos_path(current_user.id), class: 'btn btn-outline-primary' %>
         <%= link_to 'ログアウト', session_path(current_user.id), method: :delete, class: 'btn btn-outline-danger' %>
       <% else %>
       <% end %>

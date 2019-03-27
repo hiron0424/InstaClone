@@ -1,3 +1,16 @@
-<h1><%= @user.name %>のページ</h1>
+  <div class="field">
+      <% if @user.image && @user.image.url %>
+        <p style='float:left;'>
+          <%= image_tag(@user.image.url, size: '150x150',class: 'rounded-circle border border-dark img-responsive m-4') %>
+        </p>
+      <% else %>
+        <p style='float:left;'>
+          <%= image_tag('no_image.jpg', size: '150x150', class: 'rounded-circle border border-dark img-responsive m-4') %>
+        </p>
+      <% end %>
+
+      <span style="font-size: 20px" class="m-5"><%= @user.name %></span><br><br>
+      <%= link_to 'プロフィールを編集', edit_user_path(@user.id), class: 'btn btn-outline-dark m-5' %>
+  </div>
 
 <p>メールアドレス: <%= @user.email %></p>
