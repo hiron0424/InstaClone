@@ -32,7 +32,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.new(photo_params)
 
     respond_to do |format|
       if @photo.save
@@ -48,24 +48,32 @@ class PhotosController < ApplicationController
   # PATCH/PUT /photos/1
   # PATCH/PUT /photos/1.json
   def update
-    respond_to do |format|
-      if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @photo }
-      else
-        format.html { render :edit }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+    if @photo.user_id == current_user.id
+      respond_to do |format|
+        if @photo.update(photo_params)
+          format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+          format.json { render :show, status: :ok, location: @photo }
+        else
+          format.html { render :edit }
+          format.json { render json: @photo.errors, status: :unprocessable_entity }
+        end
       end
+    else 
+      redirect_to @photo, notice: 'ご自身の投稿以外は編集できません！'
     end
   end
 
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
-    @photo.destroy
-    respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
-      format.json { head :no_content }
+    if @photo.user_id == current_user.id
+      @photo.destroy
+      respond_to do |format|
+        format.html { redirect_to photos_url, notice: '投稿を削除しました.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to @photo, notice: 'ご自身の投稿以外は削除できません！'
     end
   end
 

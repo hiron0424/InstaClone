@@ -18,7 +18,7 @@
       <% end %>
 
       <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
+        <p style="color:gray"><%= content_tag(:div, value, class: "#{key}") %></p><br>
       <% end %>
 
       <%= yield %>
