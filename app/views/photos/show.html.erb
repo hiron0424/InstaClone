@@ -10,6 +10,9 @@
   <%= image_tag @photo.image.url, class: 'rounded', width: '600', height: 'auto' %>
 </p>
 
+<div id="likes_buttons_<%= @photo.id %>">
+  <%= render partial: "likes/like", locals: {photo: @photo, likes: @likes} %>
+</div>
 
 <% if @photo.user_id == current_user.id %>
   <%= link_to 'Edit', edit_photo_path(@photo) %>

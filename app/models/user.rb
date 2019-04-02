@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255},
             format: {with:/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
   has_many :photos
+  has_many :likes, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 end

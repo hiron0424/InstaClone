@@ -1,0 +1,19 @@
+<% if logged_in? %>
+
+  <% unless photo.like_user(current_user.id).blank? %>
+    <div class="vertical_like">
+      <%= link_to photo_like_path(photo_id: photo.id, id: photo.likes[0].id), style: 'color:black; text-decoration: none;', method: :delete, remote: true do %>
+        <i class="fas fa-heart"></i>
+        <span><%= photo.likes_count %></span>
+      <% end %>
+    </div>
+  <% else %>
+    <%= link_to photo_likes_path(photo.id), style: 'color:black; text-decoration: none;', method: :post, remote: true do %>
+      <div class="vertical_like">
+        <i class="far fa-heart"></i>
+        <span><%= photo.likes_count %></span>
+      </div>
+    <% end %>
+  <% end %>
+
+<% end %>

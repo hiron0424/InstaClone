@@ -1,0 +1,14 @@
+{
+  "workbench.colorCustomizations": {
+    "editor.background": "#202020",
+
+    "activityBar.background": "#252525",
+    "activityBar.border": "#606060",
+
+    "sideBar.background": "#252525",
+    "sideBar.border": "#606060",
+
+    "terminal.integrated.fontSize": 19, // フォントサイズ
+    "terminal.background": "#202020",
+  }
+}

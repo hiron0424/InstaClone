@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    resources :likes, only: [:create, :destroy]
   end
 
   resources :users
