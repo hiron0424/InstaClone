@@ -7,6 +7,8 @@ class User < ApplicationRecord
             format: {with:/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
   has_many :photos
   has_many :likes, dependent: :destroy
+  has_many :clips, dependent: :destroy
+  has_many :clip_photo, through: :clips, source: :photo
 
   mount_uploader :image, ImageUploader
 end

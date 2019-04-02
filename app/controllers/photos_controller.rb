@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @clip = current_user.clips.find_by(photo_id: @photo.id)
   end
 
   # GET /photos/new
@@ -58,7 +59,7 @@ class PhotosController < ApplicationController
           format.json { render json: @photo.errors, status: :unprocessable_entity }
         end
       end
-    else 
+    else
       redirect_to @photo, notice: 'ご自身の投稿以外は編集できません！'
     end
   end

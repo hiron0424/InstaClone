@@ -14,6 +14,10 @@
   <%= render partial: "likes/like", locals: {photo: @photo, likes: @likes} %>
 </div>
 
+<div id="clips_buttons_<%= @photo.id %>">
+  <%= render partial: "clips/clip", locals: {photo: @photo, clips: @clips} %>
+</div>
+
 <% if @photo.user_id == current_user.id %>
   <%= link_to 'Edit', edit_photo_path(@photo) %>
 <% end %>

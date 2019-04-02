@@ -14,3 +14,23 @@
   </div>
 
 <p>メールアドレス: <%= @user.email %></p>
+
+<div class="vertical_clip">
+  <i class="far fa-bookmark"></i>
+  <span>あなたのお気に入り</span>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% current_user.clip_photo.each do |photo| %>
+      <div class="col-xs-4 col-md-4 my-3">
+          <div class="caption rounded">
+            <%= link_to photo_path(photo) do %>
+              <span class="text"><p><i class="fas fa-heart"></i> <%= photo.likes_count %></p></span>
+              <%= image_tag photo.image.url, class: 'card rounded shadow-lg', width: '100%', height: '220', style: 'object-fit: cover;' %>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

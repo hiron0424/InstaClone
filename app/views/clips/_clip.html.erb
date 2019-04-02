@@ -1,0 +1,19 @@
+<% if logged_in? %>
+
+  <% unless photo.clip_user(current_user.id).blank? %>
+    <div class="vertical_clip">
+      <%= link_to photo_clip_path(photo_id: photo.id, id: photo.clips[0].id), style: 'color:black; text-decoration: none;', method: :delete, remote: true do %>
+        <i class="fas fa-bookmark"></i>
+        <span><%= photo.clips_count %></span>
+      <% end %>
+    </div>
+  <% else %>
+    <%= link_to photo_clips_path(photo.id), style: 'color:black; text-decoration: none;', method: :post, remote: true do %>
+      <div class="vertical_clip">
+        <i class="far fa-bookmark"></i>
+        <span><%= photo.clips_count %></span>
+      </div>
+    <% end %>
+  <% end %>
+
+<% end %>
