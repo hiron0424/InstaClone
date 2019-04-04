@@ -1,15 +1,15 @@
 <%= render 'layouts/navbar' %>
 
 <div class="container-fluid my-5">
-  <div class="card shadow mx-auto" style="max-width: 50rem">
+  <div class="card shadow mx-auto" style="max-width: 50rem;">
     <div class="card-header">
-      <%= image_tag(@photo.user.image.url, size: '70x70',class: 'rounded-circle border border-dark img-responsive mx-3 my-2') %>
+      <%= image_tag(@photo.user.image.url, size: '50x50',class: 'rounded-circle border border-secondly img-responsive mx-3 my-2') %>
       <span class="m-3"><%= @photo.user.name %></span>
-      <span>一言：<%= @photo.description %></span>
+      <span>ひとこと：<%= @photo.description %></span>
     </div>
 
-    <div class="card-body">
-        <%= image_tag @photo.image.url, class: 'card-img', alt: 'Card image' %>
+    <div class="card-body" style="padding: 0;">
+        <%= image_tag @photo.image.url, class: 'card-img', alt: 'Card image', style: 'border-radius: 0;' %>
     </div>
 
     <div class="card-footer">

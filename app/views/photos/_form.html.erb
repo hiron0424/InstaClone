@@ -1,6 +1,6 @@
 <%= render 'layouts/navbar'%>
 
-<div class="container-fluid my-5">
+<div class="container-fluid my-5" style="min-height: 70vh;">
   <div class="card shadow mx-auto" style="max-width: 50rem;">
     <%= form_with(model: @photo, local: true, url: choose_new_or_edit ) do |form| %>
       <% if photo.errors.any? %>

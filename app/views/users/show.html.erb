@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="container-fluid wrapper" style="min-height: 100vh; padding: 0;">
+<div class="container-fluid" style="padding: 0;">
   <div class="container-fluid border-bottom">
     <div class="container my-3" id="user_field">
         <div id="user_photo">
@@ -32,7 +32,7 @@
         <div id="user_logout">
           <% if logged_in? %>
             <%= link_to session_path(current_user.id), method: :delete do %>
-              <i class="fas fa-sign-out-alt" style="color: red;"></i>
+              <i class="fas fa-sign-out-alt" style="color: gray;"></i>
             <% end %>
           <% end %>
         </div>
@@ -41,9 +41,9 @@
 
   <div class="container-fluid my-3">
     <div class="container">
-      <div class="vertical_clip">
-        <i class="fas fa-bookmark"></i>
-        <span>あなたのお気に入り</span>
+      <div class="user_favolite">
+        <i class="far fa-bookmark"></i>
+        <span>保存済み</span>
       </div>
       <div class="row">
         <% current_user.clip_photo.each do |photo| %>
