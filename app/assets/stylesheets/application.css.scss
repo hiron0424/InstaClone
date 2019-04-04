@@ -2,6 +2,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+/* ロゴ設定 */
 @font-face {
   font-family: 'Billabong';
   src: font-url('Billabong.ttf') format('truetype');
@@ -12,11 +13,19 @@
 .logo-font{
   font-family: 'Billabong';
 }
+/* ロゴend */
+
+/* 全体設定 */
+body {
+  background: #f5f5f5;
+}
 
 ul{
   list-style: none;
 }
+/* 全体 end */
 
+/* rowの行間調整 */
 .row-0{
   margin-left:0px;
   margin-right:0px;
@@ -62,7 +71,9 @@ ul{
       padding-left:20px;
   }
 }
+/* row行間調整end */
 
+/* 投稿写真一覧の設定 */
 .caption {
   position: relative;
   background: #000;
@@ -82,14 +93,98 @@ ul{
   color: white;
   font-size: 150%;
 }
+
 .caption:hover .text {
   opacity: 1;
 }
+
 .caption:hover img {
   opacity: 0.5;
 }
+/* 投稿写真一覧end */
 
+/* いいねボタン設定 */
 .vertical_like {
   text-decoration: none;
   font-size: 150%;
 }
+/* いいねend */
+
+/* お気に入りボタン設定 */
+.vertical_clip {
+  text-decoration: none;
+  font-size: 150%;
+}
+/* お気にりend */
+
+/* 写真詳細画面のedit,deleteアイコン設定 */
+.photo_edit {
+  text-decoration: none;
+  font-size: 170%;
+}
+
+.photo_delete {
+  text-decoration: none;
+  font-size: 170%;
+}
+/* 写真詳細アイコンend */
+
+/* ナビゲーションバー */
+.navbar i {
+  font-size: 200%;
+}
+
+.navbar-nav li {
+  margin-left: 20px;
+}
+/* ナビゲーションバーend */
+
+/* footer設定 */
+footer p {
+  text-align: right;
+  padding-right: 20px;
+  color: #a0a0a0;
+}
+
+.footer {
+  margin-top: 100px;
+}
+/* footer,end */
+
+/* ユーザー編集画面、ユーザー画像欄 begin */
+#user_field {
+  display: grid;
+  grid-template-rows: 100px 100px;
+  grid-template-columns: 200px 200px 1fr;
+  grid-template-areas:
+      "photo user_name   etc"
+      "photo user_config logout "
+}
+
+#user_photo {
+  grid-area: photo;
+}
+
+#user_name {
+  grid-area: user_name;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#user_config {
+  grid-area: user_config;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+#user_logout {
+  grid-area: logout;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+}
+/* ユーザー編集画面 end */

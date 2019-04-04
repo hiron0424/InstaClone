@@ -1,25 +1,43 @@
-<p><%= @photo.user.name %></p>
+<%= render 'layouts/navbar' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @photo.description %>
-</p>
+<div class="container-fluid my-5">
+  <div class="card shadow mx-auto" style="max-width: 50rem">
+    <div class="card-header">
+      <%= image_tag(@photo.user.image.url, size: '70x70',class: 'rounded-circle border border-dark img-responsive mx-3 my-2') %>
+      <span class="m-3"><%= @photo.user.name %></span>
+      <span>一言：<%= @photo.description %></span>
+    </div>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @photo.image.url, class: 'rounded', width: '600', height: 'auto' %>
-</p>
+    <div class="card-body">
+        <%= image_tag @photo.image.url, class: 'card-img', alt: 'Card image' %>
+    </div>
 
-<div id="likes_buttons_<%= @photo.id %>">
-  <%= render partial: "likes/like", locals: {photo: @photo, likes: @likes} %>
+    <div class="card-footer">
+        <div id="likes_buttons_<%= @photo.id %>" class="float-sm-left ml-5 my-2">
+          <%= render partial: "likes/like", locals: {photo: @photo, likes: @likes} %>
+        </div>
+
+        <div id="clips_buttons_<%= @photo.id %>" class="float-sm-left ml-5 my-2">
+          <%= render partial: "clips/clip", locals: {photo: @photo, clips: @clips} %>
+        </div>
+
+        <div class="photo_delete float-sm-right mr-5 my-2">
+          <% if @photo.user_id == current_user.id %>
+            <%= link_to photo_path(@photo), method: :delete, data: {confirm: '削除していいですか？'}, style: 'color: black;' do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="photo_edit float-sm-right mr-5 my-2">
+          <% if @photo.user_id == current_user.id %>
+            <%= link_to edit_photo_path(@photo), style: 'color: black;' do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+  </div>
 </div>
 
-<div id="clips_buttons_<%= @photo.id %>">
-  <%= render partial: "clips/clip", locals: {photo: @photo, clips: @clips} %>
-</div>
-
-<% if @photo.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_photo_path(@photo) %>
-<% end %>
-
-<%= link_to 'Back', photos_path %>
+<%= render 'layouts/footer' %>

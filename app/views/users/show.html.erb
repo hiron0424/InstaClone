@@ -1,36 +1,58 @@
-  <div class="field">
-      <% if @user.image && @user.image.url %>
-        <p style='float:left;'>
-          <%= image_tag(@user.image.url, size: '150x150',class: 'rounded-circle border border-dark img-responsive m-4') %>
-        </p>
-      <% else %>
-        <p style='float:left;'>
-          <%= image_tag('no_image.jpg', size: '150x150', class: 'rounded-circle border border-dark img-responsive m-4') %>
-        </p>
-      <% end %>
+<%= render 'layouts/navbar' %>
 
-      <span style="font-size: 20px" class="m-5"><%= @user.name %></span><br><br>
-      <%= link_to 'プロフィールを編集', edit_user_path(@user.id), class: 'btn btn-outline-dark m-5' %>
-  </div>
+<p id="notice"><%= notice %></p>
 
-<p>メールアドレス: <%= @user.email %></p>
+<div class="container-fluid wrapper" style="min-height: 100vh; padding: 0;">
+  <div class="container-fluid border-bottom">
+    <div class="container my-3" id="user_field">
+        <div id="user_photo">
+          <% if @user.image && @user.image.url %>
+              <%= image_tag(@user.image.url, size: '150x150',class: 'rounded-circle border border-secondly img-responsive m-4') %>
+          <% else %>
+              <%= image_tag('no_image.jpg', size: '150x150', class: 'rounded-circle border border-secondly img-responsive m-4') %>
+          <% end %>
+        </div>
 
-<div class="vertical_clip">
-  <i class="far fa-bookmark"></i>
-  <span>あなたのお気に入り</span>
-</div>
+        <div id="user_name">
+          <%= @user.name %>
+        </div>
 
-<div class="container">
-  <div class="row">
-    <% current_user.clip_photo.each do |photo| %>
-      <div class="col-xs-4 col-md-4 my-3">
-          <div class="caption rounded">
-            <%= link_to photo_path(photo) do %>
-              <span class="text"><p><i class="fas fa-heart"></i> <%= photo.likes_count %></p></span>
-              <%= image_tag photo.image.url, class: 'card rounded shadow-lg', width: '100%', height: '220', style: 'object-fit: cover;' %>
+        <div id="user_config">
+          <%= link_to edit_user_path(@user.id) do %>
+            <i class="fas fa-user-cog" style="color: black;"></i>
+          <% end %>
+        </div>
+
+        <div id="user_logout">
+          <% if logged_in? %>
+            <%= link_to session_path(current_user.id), method: :delete do %>
+              <i class="fas fa-sign-out-alt" style="color: red;"></i>
             <% end %>
-          </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+
+  <div class="container-fluid my-3">
+    <div class="container">
+      <div class="vertical_clip">
+        <i class="fas fa-bookmark"></i>
+        <span>あなたのお気に入り</span>
       </div>
-    <% end %>
+      <div class="row">
+        <% current_user.clip_photo.each do |photo| %>
+          <div class="col-sm-4 my-3">
+              <div class="caption rounded">
+                <%= link_to photo_path(photo) do %>
+                  <span class="text"><p><i class="fas fa-heart"></i> <%= photo.likes_count %></p></span>
+                  <%= image_tag photo.image.url, class: 'card rounded shadow-lg', width: '100%', height: '220', style: 'object-fit: cover;' %>
+                <% end %>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+<%= render 'layouts/footer'%>

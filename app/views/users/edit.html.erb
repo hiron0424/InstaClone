@@ -4,7 +4,7 @@
 
   <div class="field">
     <%= f.label :image %><br/>
-    <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+    <%= image_tag(@user.image.url, size: '150x150',class: 'rounded-circle border border-dark img-responsive m-4') if @user.image && @user.image.url %>
     <label class="btn btn-outline-dark"><%= f.file_field :image, style: 'display:none' %>プロフィール写真を変更</label>
     <%= f.hidden_field :image_cache %>
   </div>

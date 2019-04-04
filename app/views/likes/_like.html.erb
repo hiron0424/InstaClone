@@ -8,7 +8,7 @@
       <% end %>
     </div>
   <% else %>
-    <%= link_to photo_likes_path(photo.id), style: 'color:black; text-decoration: none;', method: :post, remote: true do %>
+    <%= link_to photo_likes_path(photo.id), style: 'color: gray; text-decoration: none;', method: :post, remote: true do %>
       <div class="vertical_like">
         <i class="far fa-heart"></i>
         <span><%= photo.likes_count %></span>

@@ -1,15 +1,34 @@
-<h1>確認画面</h1>
-<%= form_with(model: @photo, url: photos_path, local: true) do |form| %>
-  <%= form.hidden_field :description %>
-  <p>内容:<%= @photo.description %></p>
-  <!-- 確認画面でアップロードした画像を表示させるための記述 -->
-  <%= image_tag(@photo.image.url) if @photo.image && @photo.image.url %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit "投稿する" %>
-<% end %>
+<%= render 'layouts/navbar'%>
 
-<%= form_with(model:@photo, url:new_photo_path, local:true, method:"get") do |form| %>
-  <%= form.hidden_field :description %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit "戻る", name: "back" %>
-<% end %>
+<div class="container-fluid my-5">
+  <div class="card shadow mx-auto" style="max-width: 50rem;">
+    <div class="mx-auto my-5">
+      <p>投稿確認</p>
+    </div>
+    <%= form_with(model: @photo, url: photos_path, local: true) do |form| %>
+      <div class="mx-auto my-3">
+        <%= form.hidden_field :description %>
+        <p class="text-center">内容:<%= @photo.description %></p>
+      </div>
+      <!-- 確認画面でアップロードした画像を表示させるための記述 -->
+      <div class="form-group mx-auto w-75">
+        <%= image_tag(@photo.image.url, width: '100%', height: 'auto', style: 'object-fit: cover;') if @photo.image && @photo.image.url %>
+        <%= form.hidden_field :image_cache %>
+      </div>
+
+      <div class="form-group mx-auto w-75 my-5">
+        <%= form.submit "投稿する", class: 'btn btn-primary btn-block' %>
+      </div>
+    <% end %>
+
+    <div class="form-group mx-auto w-75 my-5">
+      <%= form_with(model:@photo, url:new_photo_path, local:true, method:"get") do |form| %>
+        <%= form.hidden_field :description %>
+        <%= form.hidden_field :image_cache %>
+        <%= form.submit "戻る", name: "back", class: 'btn btn-link' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/footer'%>
