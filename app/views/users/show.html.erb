@@ -23,6 +23,12 @@
           <% end %>
         </div>
 
+        <div id="contact_mail">
+          <%= link_to new_contact_path do %>
+            <i class="far fa-paper-plane" style="color: black;"></i>
+          <% end %>
+        </div>
+
         <div id="user_logout">
           <% if logged_in? %>
             <%= link_to session_path(current_user.id), method: :delete do %>
