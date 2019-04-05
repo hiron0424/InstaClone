@@ -40,22 +40,22 @@
   </div>
 
   <div class="container-fluid my-3">
-    <div class="container">
-      <div class="user_favolite">
+    <div class="container" style=" min-height: 70vh;">
+      <div class="user_favorite my-3 mx-auto">
         <i class="far fa-bookmark"></i>
-        <span>保存済み</span>
+        <span style="text-align: center;">保存済み</span>
       </div>
-      <div class="row">
-        <% current_user.clip_photo.each do |photo| %>
-          <div class="col-sm-4 my-3">
-              <div class="caption rounded">
-                <%= link_to photo_path(photo) do %>
-                  <span class="text"><p><i class="fas fa-heart"></i> <%= photo.likes_count %></p></span>
-                  <%= image_tag photo.image.url, class: 'card rounded shadow-lg', width: '100%', height: '220', style: 'object-fit: cover;' %>
-                <% end %>
-              </div>
-          </div>
-        <% end %>
+      <div class="container">
+        <div class="index_photo">
+          <% current_user.clip_photo.each do |photo| %>
+                <div class="caption">
+                  <%= link_to photo_path(photo) do %>
+                    <span class="text"><p><i class="fas fa-heart"></i> <%= photo.likes_count %></p></span>
+                    <%= image_tag photo.image.url, class: 'card shadow-lg', width: '100%', height: '220', style: 'object-fit: cover;' %>
+                  <% end %>
+                </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

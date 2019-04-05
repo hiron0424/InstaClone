@@ -1,37 +1,46 @@
-<h2>ユーザ情報を編集</h2>
+<%= render 'layouts/navbar' %>
 
-<%= form_with(model: @user, local: true ) do |f| %>
+<div class="container" style="min-height: 60vh">
+  <div class="card shadow mt-5 mb-5">
+    <h3 class="text-center mt-5">ユーザ情報を編集</h3>
 
-  <div class="field">
-    <%= f.label :image %><br/>
-    <%= image_tag(@user.image.url, size: '150x150',class: 'rounded-circle border border-dark img-responsive m-4') if @user.image && @user.image.url %>
-    <label class="btn btn-outline-dark"><%= f.file_field :image, style: 'display:none' %>プロフィール写真を変更</label>
-    <%= f.hidden_field :image_cache %>
+    <div class="container">
+      <%= form_with(model: @user, local: true ) do |f| %>
+
+        <div class="field">
+          <%= f.label :image %><br/>
+          <%= image_tag(@user.image.url, size: '130x130',class: 'rounded-circle border border-dark img-responsive m-4') if @user.image && @user.image.url %>
+          <label class="btn btn-outline-dark"><%= f.file_field :image, style: 'display:none' %>プロフィール写真を変更</label>
+          <%= f.hidden_field :image_cache %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name,'名前' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, 'メール' %>
+          <%= f.text_field :email, class: 'form-control', placeholder: 'Enter your email' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, 'パスワード' %>
+          <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+          <span id="helpBlock" class="text-muted">パスワードは半角英数、6文字以上で入力してください。</span>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, 'パスワード確認' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit '更新する', class: 'btn btn-primary btn-block my-5' %>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= f.label :name,'名前' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email, 'メール' %>
-    <%= f.text_field :email, class: 'form-control', placeholder: 'Enter your email' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password, 'パスワード' %>
-    <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
-    <span id="helpBlock" class="text-muted">パスワードは半角英数、6文字以上で入力してください。</span>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation, 'パスワード確認' %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= link_to '戻る', user_path, class: 'btn btn-outline-warning' %>
-    <%= f.submit '更新する', class: 'btn btn-outline-primary' %>
-  </div>
-<% end %>
+<%= render 'layouts/footer'%>
