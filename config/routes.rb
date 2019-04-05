@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'photos#index'
 
   resources :contacts, only: [:new, :create, :show]
-  mount LetterOpenerWeb::Engine, at: "letter_opener"
+  # mount LetterOpenerWeb::Engine, at: "letter_opener"
 
   resources :sessions, only: [:new, :create, :destroy]
 
