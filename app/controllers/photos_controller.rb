@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.save
         # ContactMailer.post_photo(@photo).deliver_now
-        format.html { redirect_to @photo, notice: '画像投稿が完了しました' }
+        format.html { redirect_to photos_path(current_user.id), notice: '画像投稿が完了しました' }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
