@@ -1,0 +1,6 @@
+ja:
+  photos:
+    new:
+    form:
+      image: 画像
+      photo_saved_error: 件のエラーがあります。

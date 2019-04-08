@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    # モデル名
+    models:
+      user: 顧客
+    # モデルごとのアトリビュート
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        error: エラー
+        image: ユーザー画像

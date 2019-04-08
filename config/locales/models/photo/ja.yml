@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    # モデル名
+    models:
+      photo: 写真
+    # モデルごとのアトリビュート
+    attributes:
+      photo:
+        description: ひとこと
+        image: 画像

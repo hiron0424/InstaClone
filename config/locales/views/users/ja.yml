@@ -1,0 +1,5 @@
+ja:
+  users:
+    new:
+      error: エラー
+      user_saved_error: 件のエラーがあります

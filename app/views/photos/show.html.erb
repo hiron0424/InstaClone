@@ -3,7 +3,11 @@
 <div class="container-fluid my-5">
   <div class="card shadow mx-auto" style="max-width: 50rem;">
     <div class="card-header">
-      <%= image_tag(@photo.user.image.url, size: '50x50',class: 'rounded-circle border border-secondly img-responsive mx-3 my-2') %>
+      <% if @photo.user.image.presence %>
+        <%= image_tag(@photo.user.image.url, size: '50x50',class: 'rounded-circle border border-secondly img-responsive mx-3 my-2') %>
+      <% else %>
+        <%= image_tag('no_image.jpg', size: '50x50', class: 'rounded-circle border border-secondly img-responsive mx-3 my-2') %>
+      <% end %>
       <span class="m-3"><%= @photo.user.name %></span>
       <span>ひとこと：<%= @photo.description %></span>
     </div>

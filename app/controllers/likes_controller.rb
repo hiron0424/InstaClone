@@ -4,7 +4,11 @@ class LikesController < ApplicationController
   def create
     @like = Like.create(user_id: current_user.id, photo_id: params[:photo_id])
     @likes = Like.where(photo_id: params[:photo_id])
-    @photo.reload
+    if @like.save
+      @photo.reload
+    else
+      @photo.reload
+    end
   end
 
   def destroy
